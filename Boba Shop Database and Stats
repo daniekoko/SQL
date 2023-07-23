@@ -19,10 +19,12 @@ INSERT INTO bobashop VALUES
 (15,"Oreo Milk Tea","Oreo",6,"S. Korea");
 
 --display the database ordered by price
-SELECT * FROM bobashop ORDER BY Price asc;
+SELECT * FROM bobashop 
+ORDER BY Price asc;
 
 --What is the average price of each tea on the menu?
 SELECT AVG(Price) FROM bobashop;
 
 --What items can customers order on a budget of $5?
-SELECT tea_name FROM bobashop WHERE Price<=5;
+SELECT tea_name FROM bobashop 
+WHERE Price<=5;
