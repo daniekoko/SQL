@@ -1,0 +1,25 @@
+--Create a database for a bubble tea shop
+CREATE TABLE bobashop (id INTEGER Primary Key,tea_name TEXT,main_ingredient TEXT,Price INTEGER,origin TEXT);
+
+INSERT INTO bobashop VALUES
+(1,"Butterfly Tea","Pea flower",8,"Thailand"),
+(2,"Milk tea","Black Tea",4,"Taiwan"),
+(3,"Peach Yakult Smoothie","Peaches",6,"S. Korea"),
+(4,"Okinawa Milk Foam Smoothie","Kokuto",10,"Japan"),
+(5,"Hokkaido Milk Tea","Hokkaido Milk Tea",5,"Japan"),
+(6,"Mango Milk Tea","Mango",5,"Taiwan"),
+(7,"Strawberry Milk Tea","Strawberry",7,"S. Korea"),
+(8,"Passionfruit Green Tea","Green Tea",11,"China"),
+(9,"Roselle Plum Tea","Plum",7,"S. Korea"),
+(10,"Lychee Oolong Tea","Lychee",6,"S. Korea"),
+(11,"Okinawa Latter","Coffee",8,"Japan"),
+(12,"Strawberry Earl Grey Latter","Earl Grey tea",7,"China"),
+(13,"Taro Milk Tea","Taro",9,"Taiwan"),
+(14,"Black Pearl Milk tea","Black Tea",5,"Taiwan"),
+(15,"Oreo Milk Tea","Oreo",6,"S. Korea");
+
+--display the databse ordered by price.
+SELECT * FROM bobashop ORDER BY Price asc;
+
+--What is the average price of each tea on the menu?
+SELECT AVG(Price) FROM bobashop;
