@@ -18,7 +18,7 @@ INSERT INTO bobashop VALUES
 (14,"Black Pearl Milk tea","Black Tea",5,"Taiwan"),
 (15,"Oreo Milk Tea","Oreo",6,"S. Korea");
 
---display the databse ordered by price.
+--display the database ordered by price
 SELECT * FROM bobashop ORDER BY Price asc;
 
 --What is the average price of each tea on the menu?
