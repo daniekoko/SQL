@@ -29,7 +29,7 @@ SELECT AVG(Price) FROM bobashop;
 SELECT tea_name FROM bobashop 
 WHERE Price<=5;
 
---Suppose Butterfly pea flower is no longer readily available, what are the three most expensive menu items?
+--Suppose Butterfly pea flower is no longer readily available, which three menu items are the  most expensive?
 SELECT tea_name FROM bobashop
 ORDER BY DESC
 LIMIT 3 OFFSET 1;
