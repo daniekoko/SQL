@@ -1,8 +1,8 @@
 --Create a database for a bubble tea shop
-CREATE TABLE bobashop (id INTEGER Primary Key,tea_name TEXT,main_ingredient TEXT,Price INTEGER,origin TEXT);
+CREATE TABLE bobashop (id INTEGER Primary Key,tea_name TEXT,main_ingredient TEXT,Price INTEGER,Origin TEXT);
 
 INSERT INTO bobashop VALUES
-(1,"Butterfly Tea","Pea flower",8,"Thailand"),
+(1,"Butterfly Tea","Butterfly pea flower",10,"Thailand"),
 (2,"Milk tea","Black Tea",4,"Taiwan"),
 (3,"Peach Yakult Smoothie","Peaches",6,"S. Korea"),
 (4,"Okinawa Milk Foam Smoothie","Kokuto",10,"Japan"),
@@ -29,7 +29,7 @@ SELECT AVG(Price) FROM bobashop;
 SELECT tea_name FROM bobashop 
 WHERE Price<=5;
 
---What are the three most expensive menu items?
+--Suppose Butterfly pea flower is no longer readily available, what are the three most expensive menu items?
 SELECT tea_name FROM bobashop
 ORDER BY DESC
-LIMIT 3;
+LIMIT 3 OFFSET 1;
