@@ -12,24 +12,39 @@ INSERT INTO bobashop VALUES
 (8,"Passionfruit Green Tea","Green Tea",11,"China"),
 (9,"Roselle Plum Tea","Plum",7,"S. Korea"),
 (10,"Lychee Oolong Tea","Lychee",6,"S. Korea"),
-(11,"Okinawa Latter","Coffee",8,"Japan"),
-(12,"Strawberry Earl Grey Latter","Earl Grey tea",7,"China"),
+(11,"Okinawa Latte","Coffee",8,"Japan"),
+(12,"Strawberry Earl Grey Latte","Earl Grey tea",7,"China"),
 (13,"Taro Milk Tea","Taro",9,"Taiwan"),
-(14,"Black Pearl Milk tea","Black Tea",5,"Taiwan"),
+(14,"Black Pearl Milk Tea","Black Tea",5,"Taiwan"),
 (15,"Oreo Milk Tea","Oreo",6,"S. Korea");
 
 --display the database ordered by price
 SELECT * FROM bobashop 
-ORDER BY Price asc;
+ORDER BY Price ASC;
 
 --What is the average price of each tea on the menu?
 SELECT AVG(Price) FROM bobashop;
 
---What items can customers order on a budget of $5?
+--Suppose the business wants to run a promotional ad for $5 boba drinks. What items can customers order on a budget of $5?
 SELECT tea_name FROM bobashop 
-WHERE Price<=5;
+WHERE Price<=5
+ORDER BY tea_name ASC;
 
---Suppose Butterfly pea flower is no longer readily available, which three menu items are the  most expensive?
+--Suppose Butterfly pea flower is no longer readily available, which three menu items are the  most expensive? (Needs more work)
 SELECT tea_name FROM bobashop
-ORDER BY DESC
+ORDER BY Price DESC
 LIMIT 3 OFFSET 1;
+
+/* Suppose the Boba Shop starts a delivery service with a fixed rate of $6 per delivery. 
+What is the total cost for a consumer with a one-drink order? */
+SELECT tea_name,Price+6 
+AS "Total Delivery Cost"
+FROM bobashop;
+
+--Select menu items available for vegan customers? (Needs more work)
+SELECT tea_name,Price,Origin
+FROM bobashop
+
+--Select menu items with tea as a main ingredient?
+SELECT * FROM bobashop
+WHERE LOWER(main_ingredient) LIKE '%tea%';
