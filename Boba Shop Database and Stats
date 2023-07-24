@@ -28,3 +28,8 @@ SELECT AVG(Price) FROM bobashop;
 --What items can customers order on a budget of $5?
 SELECT tea_name FROM bobashop 
 WHERE Price<=5;
+
+--What are the three most expensive menu items?
+SELECT tea_name FROM bobashop
+ORDER BY DESC
+LIMIT 3;
