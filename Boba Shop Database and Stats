@@ -18,12 +18,21 @@ INSERT INTO bobashop VALUES
 (14,"Black Pearl Milk Tea","Black Tea",5,"Taiwan"),
 (15,"Oreo Milk Tea","Oreo",6,"S. Korea");
 
---display the database ordered by price
+/*This query completes all SQL aggregate functions for the bobashop database.
+It will create a table that displays the average, minimum and maximum prices of menu items. 
+It also shows the total number of distinct products sold by the Boba Shop and the sum of each item's prices */
+SELECT COUNT(Price),AVG(Price),MAX(Price),MIN(Price), SUM(Price)
+FROM bobashop;
+
+/* Suppose the Boba Shop starts a delivery service with a fixed rate of $6 per delivery. 
+Calculate the revenue of all available one-drink orders.*/
+SELECT tea_name,Price+6 
+AS Revenue
+FROM bobashop;
+
+--Displays the database ordered by price
 SELECT * FROM bobashop 
 ORDER BY Price ASC;
-
---What is the average price of each tea on the menu?
-SELECT AVG(Price) FROM bobashop;
 
 --Suppose the business wants to run a promotional ad for $5 boba drinks. What items can customers order on a budget of $5?
 SELECT tea_name FROM bobashop 
@@ -34,12 +43,6 @@ ORDER BY tea_name ASC;
 SELECT tea_name FROM bobashop
 ORDER BY Price DESC
 LIMIT 3 OFFSET 1;
-
-/* Suppose the Boba Shop starts a delivery service with a fixed rate of $6 per delivery. 
-What is the total cost for a consumer with a one-drink order? */
-SELECT tea_name,Price+6 
-AS "Total Delivery Cost"
-FROM bobashop;
 
 --Select menu items available for vegan customers? (Needs more work)
 SELECT tea_name,Price,Origin
