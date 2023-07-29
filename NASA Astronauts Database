@@ -406,7 +406,7 @@ HAVING Gender="Male";
 
 --Write a query to find the total number of NASA astronauts who did not pursue graduate studies. 
 SELECT COUNT(Graduate_Major) FROM astronauts
-WHERE Graduate_Major=NULL;
+WHERE Graduate_Major IS NULL;
 
 
 
