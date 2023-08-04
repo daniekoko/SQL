@@ -1,0 +1,40 @@
+-- The code below creates a database of a sample group of users that includes their name and age. Disclaimer: All names used are purely fictional.
+CREATE TABLE persons (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    age INTEGER);
+    
+INSERT INTO persons (name, age) VALUES ("Bobby Pierce", 30);
+INSERT INTO persons (name, age) VALUES ("Lucy Anderson", 34);
+INSERT INTO persons (name, age) VALUES ("Blake Thompson", 14);
+INSERT INTO persons (name, age) VALUES ("Shar Rodriguez", 20);
+INSERT INTO persons (name, age) VALUES ("Fiona Hill", 28);
+INSERT INTO persons (name, age) VALUES ("Regina George", 19);
+
+-- This code creates a database titled "interests" and is related to the users database through the person_id.
+CREATE table interests (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person_id INTEGER,
+    name TEXT);
+    
+INSERT INTO interests (person_id, name) VALUES (1, "painting");
+INSERT INTO interests (person_id, name) VALUES (1, "investing");
+INSERT INTO interests (person_id, name) VALUES (2, "dancing");
+INSERT INTO interests (person_id, name) VALUES (2, "coding");
+INSERT INTO interests (person_id, name) VALUES (3, "skating");
+INSERT INTO interests (person_id, name) VALUES (3, "basketball");
+INSERT INTO interests (person_id, name) VALUES (3, "painting");
+INSERT INTO interests (person_id, name) VALUES (4, "coding");
+INSERT INTO interests (person_id, name) VALUES (4, "skiing");
+INSERT INTO interests (person_id, name) VALUES (5, "astronomy");
+INSERT INTO interests (person_id, name) VALUES (5, "rowing");
+INSERT INTO interests (person_id, name) VALUES (6, "makeup");
+INSERT INTO interests (person_id, name) VALUES (6, "shopping");
+
+-- Write a query to select both tables through a join to view users' interests next to their name.
+SELECT persons.name,interests.name FROM persons
+JOIN interests ON interests.person_id=persons.id;
+
+--Write a query using the JOIN and WHERE functions to show only the users interested in drawing.
+SELECT persons.name,interests.name FROM persons
+JOIN interests ON interests.person_id=persons.id WHERE interests.name='coding';
