@@ -1,4 +1,4 @@
--- The code below creates a database of a sample group of users that includes their name and age. Disclaimer: All names used are purely fictional.
+-- The code below creates a database of a sample group of users that includes their names and age. Disclaimer: All names used are purely fictional.
 CREATE TABLE persons (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -15,26 +15,30 @@ INSERT INTO persons (name, age) VALUES ("Regina George", 19);
 CREATE table interests (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     person_id INTEGER,
-    name TEXT);
+    hobby TEXT);
     
-INSERT INTO interests (person_id, name) VALUES (1, "painting");
-INSERT INTO interests (person_id, name) VALUES (1, "investing");
-INSERT INTO interests (person_id, name) VALUES (2, "dancing");
-INSERT INTO interests (person_id, name) VALUES (2, "coding");
-INSERT INTO interests (person_id, name) VALUES (3, "skating");
-INSERT INTO interests (person_id, name) VALUES (3, "basketball");
-INSERT INTO interests (person_id, name) VALUES (3, "painting");
-INSERT INTO interests (person_id, name) VALUES (4, "coding");
-INSERT INTO interests (person_id, name) VALUES (4, "skiing");
-INSERT INTO interests (person_id, name) VALUES (5, "astronomy");
-INSERT INTO interests (person_id, name) VALUES (5, "rowing");
-INSERT INTO interests (person_id, name) VALUES (6, "makeup");
-INSERT INTO interests (person_id, name) VALUES (6, "shopping");
+INSERT INTO interests (person_id, hobby) VALUES (1, "painting");
+INSERT INTO interests (person_id, hobby) VALUES (1, "investing");
+INSERT INTO interests (person_id, hobby) VALUES (2, "dancing");
+INSERT INTO interests (person_id, hobby) VALUES (2, "coding");
+INSERT INTO interests (person_id, hobby) VALUES (3, "skating");
+INSERT INTO interests (person_id, hobby) VALUES (3, "basketball");
+INSERT INTO interests (person_id, hobby) VALUES (3, "painting");
+INSERT INTO interests (person_id, hobby) VALUES (4, "coding");
+INSERT INTO interests (person_id, hobby) VALUES (4, "skiing");
+INSERT INTO interests (person_id, hobby) VALUES (5, "astronomy");
+INSERT INTO interests (person_id, hobby) VALUES (5, "rowing");
+INSERT INTO interests (person_id, hobby) VALUES (6, "makeup");
+INSERT INTO interests (person_id, hobby) VALUES (6, "shopping");
 
 -- Write a query to select both tables through a join to view users' interests next to their name.
-SELECT persons.name,interests.name FROM persons
+SELECT persons.name,interests.hobby FROM persons
 JOIN interests ON interests.person_id=persons.id;
 
 --Write a query using the JOIN and WHERE functions to show only the users interested in drawing.
-SELECT persons.name,interests.name FROM persons
-JOIN interests ON interests.person_id=persons.id WHERE interests.name='coding';
+SELECT persons.name,interests.hobby FROM persons
+JOIN interests ON interests.person_id=persons.id WHERE interests.hobby='coding';
+
+--Select all records in which users are not interested in rowing.
+SELECT * FROM interests
+WHERE NOT hobby='rowing';
