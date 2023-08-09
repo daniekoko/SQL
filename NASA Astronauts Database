@@ -1,4 +1,4 @@
---Source: https://www.kaggle.com/nasa/astronaut-yearbook
+-- Hello, this is a large database. Kindly scroll to line 380 to view the queries I wrote. Thank you.
 CREATE TABLE astronauts(
    Name                TEXT PRIMARY KEY,
    Year                INTEGER,
@@ -378,9 +378,9 @@ INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,A
 INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,Alma_Mater,Undergraduate_Major,Graduate_Major,Military_Rank,Military_Branch,Space_Flights,Space_Flight_hr,Space_Walks,Space_Walks_hr,Missions,Death_Date,Death_Mission) VALUES ('John W. Young',1962,2,'Retired','9/24/1930','San Francisco, CA','Male','Georgia Institute of Technology','Aeronautical Engineering',NULL,'Captain','US Navy (Retired)',6,835,3,20,'Gemini 3, Gemini 10, Apollo 10, Apollo 16, STS-1 (Columbia), STS-9 (Columbia)',NULL,NULL);
 INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,Alma_Mater,Undergraduate_Major,Graduate_Major,Military_Rank,Military_Branch,Space_Flights,Space_Flight_hr,Space_Walks,Space_Walks_hr,Missions,Death_Date,Death_Mission) VALUES ('George D. Zamka',1998,17,'Retired','6/29/1962','Jersey City, NJ','Male','US Naval Academy; Florida Institute of Technology','Mathematics','Engineering Management','Colonel','US Marine Corps (Retired)',2,692,0,0,'STS-120 (Discovery), STS-130 (Endeavor)',NULL,NULL);
 
---Find the maximum Space_Flight_hr.
-SELECT MAX(Space_Flight_hr)
-FROM astronauts;
+--Write a query to find the total number of NASA astronauts who did not pursue graduate studies. 
+SELECT COUNT(Graduate_Major) FROM astronauts
+WHERE Graduate_Major IS NULL;
 
 --Write a query to select the earliest years in which both men and women became NASA astronauts.
 SELECT Gender,MIN(Year)
@@ -388,9 +388,11 @@ FROM astronauts
 GROUP BY Gender
 ORDER BY Year ASC;
 
---Find the average Space_Walks_hr.
-SELECT AVG(Space_Walks_hr)
-FROM astronauts;
+--Write a query to group retired male astronauts by undergraduate majors and count the total number in each group.
+SELECT COUNT(Name),Undergraduate_Major FROM astronauts
+WHERE Status = "Retired"
+GROUP BY Undergraduate_Major
+HAVING Gender="Male";
 
 --Write a query to group retired female astronauts by undergraduate majors and count the total number in each group.
 SELECT COUNT(Name),Undergraduate_Major FROM astronauts
@@ -398,15 +400,20 @@ WHERE Status = "Retired"
 GROUP BY Undergraduate_Major
 HAVING Gender="Female";
 
---Write a query to group retired male astronauts by undergraduate majors and count the total number in each group.
-SELECT COUNT(Name),Undergraduate_Major FROM astronauts
-WHERE Status = "Retired"
-GROUP BY Undergraduate_Major
-HAVING Gender="Male";
+--Sort all of the astronauts by Undergraduate Major first and then, by Graduate Major. Exclude those who did not pursue Graduate studies
+SELECT * FROM astronauts
+WHERE Graduate_Major IS NOT NULL
+GROUP BY Undergraduate_Major,Graduate_Major;
 
---Write a query to find the total number of NASA astronauts who did not pursue graduate studies. 
-SELECT COUNT(Graduate_Major) FROM astronauts
-WHERE Graduate_Major IS NULL;
+--Find the maximum Space_Flight_hr.
+SELECT MAX(Space_Flight_hr)
+FROM astronauts;
+
+--Find the average Space_Walks_hr.
+SELECT AVG(Space_Walks_hr)
+FROM astronauts;
+
+
 
 
 
