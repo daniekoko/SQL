@@ -388,6 +388,15 @@ FROM astronauts
 GROUP BY Gender
 ORDER BY Year ASC;
 
+--Find all the astronauts who are from Florida for a special Kennedy Space Center event.
+SELECT * FROM astronauts
+WHERE Birth_Place LIKE '%FL%';
+
+--Write a query to group the astronauts who were in the military by Status.
+SELECT * FROM astronauts
+WHERE Military_Rank IS NOT NULL AND Military_Branch IS NOT NULL
+GROUP BY Status;
+
 --Write a query to group retired male astronauts by undergraduate majors and count the total number in each group.
 SELECT COUNT(Name),Undergraduate_Major FROM astronauts
 WHERE Status = "Retired"
@@ -405,6 +414,10 @@ SELECT * FROM astronauts
 WHERE Graduate_Major IS NOT NULL
 GROUP BY Undergraduate_Major,Graduate_Major;
 
+--Select the astronauts who have walked in space.
+SELECT * FROM astronauts
+WHERE Space_Walks > 0 AND Space_Walks_hr > 0;
+
 --Find the maximum Space_Flight_hr.
 SELECT MAX(Space_Flight_hr)
 FROM astronauts;
@@ -412,7 +425,6 @@ FROM astronauts;
 --Find the average Space_Walks_hr.
 SELECT AVG(Space_Walks_hr)
 FROM astronauts;
-
 
 
 
